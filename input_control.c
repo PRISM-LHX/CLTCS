@@ -23,8 +23,8 @@
 
 //PID算法所需要的上一次误差数据和多次误差累积的积分项
 
-static int last_error = 0 //记录上一次误差数据
-static float integral = 0.0 //记录积分项累积
+static int last_error = 0; //记录上一次误差数据
+static float integral = 0.0; //记录积分项累积
 
 void main(void){//测试后改名input_control
     
@@ -52,7 +52,7 @@ void main(void){//测试后改名input_control
         P_value = Kp * error;
 
         //积分项：需要积累误差
-        integral = integral + Ki * error;
+        //integral = integral + Ki * error;
         I_value = integral;
 
         //微分项：与误差变化率成正比
@@ -75,7 +75,10 @@ void main(void){//测试后改名input_control
             x = DAC_MIN; //最小不能低于DAC输出的下限
         }
 
-        else x = (unsigned char) (PID_value);
+        else {
+            x = (unsigned char) (PID_value);
+            integral = integral + Ki * error;//输出未超出限幅时才进行积分项累积，避免积分饱和
+        }
 
         //数字量输入DAC
         DAC = x;

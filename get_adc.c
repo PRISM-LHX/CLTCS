@@ -1,5 +1,6 @@
 #include "C8051F020.h"
 #include "absacc.h"
+#include "delay.h"
 #include "data_define.c"
 #define    CS1  XBYTE[0x20AA]
 #include "Init_Device.c"
@@ -9,7 +10,7 @@ unsigned char num[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0x7f};
 //#define filter_core 3  滤波的内容先不考虑
 //static unsigned char last_filtered = 0;
 
-void delay(uint x);
+//void delay(uint x);
 unsigned char read_adc(void);
 unsigned char ave_adc(void);
 unsigned char filter(void);
@@ -47,11 +48,11 @@ unsigned char read_adc(void)
 	return last_filtered;
 }*/
 
-void delay(uint x)
+/*void delay(uint x)
 { 
   unsigned long i=0;
 	for(i=0;i<1000*x;++i) i=i; 
-}
+}*/
 
 unsigned char ave_adc(void)
 {

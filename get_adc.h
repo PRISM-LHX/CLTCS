@@ -7,7 +7,7 @@
 
 extern unsigned char num[];
 
-void delay(uint x);
+//void delay(uint x);
 unsigned char read_adc(void);
 unsigned char ave_adc(void);
 unsigned char filter(void);

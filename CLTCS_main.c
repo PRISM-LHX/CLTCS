@@ -27,7 +27,7 @@ int main(void)
         {
             case SYS_INIT:
                 Init_Device(); //单片机初始化配置
-                LED1=LED2=LED3=LED4=0xff;//初始状态让四个数码管全灭  
+                DP1=DP2=DP3=DP4=0xff;//初始状态让四个数码管全灭  
                 set_temperature=0;//温度清零
                 get_adc();
                 SystemState=SYS_INPUT;//进入核心功能 
@@ -36,7 +36,7 @@ int main(void)
                 if(read_from_keyboard(&row,&column))
                     key_process(&row,&column,&tens_digit,&ones_digit,&process_flag);
                     if(process_flag)//按下确认键
-                        SystemState=SYS_RUNNING;
+						SystemState=SYS_RUNNING;
                 break;
             case SYS_RUNNING:
                 if(read_from_keyboard(&row,&column))
