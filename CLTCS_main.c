@@ -35,7 +35,7 @@ int main(void)
             case SYS_INPUT:
                 if(read_from_keyboard(&row,&column))
                     key_process(&row,&column,&tens_digit,&ones_digit,&process_flag);
-                    if(process_flag)//按下确认键
+                    if(process_flag)//按下确认键					
 						SystemState=SYS_RUNNING;
                 break;
             case SYS_RUNNING:
